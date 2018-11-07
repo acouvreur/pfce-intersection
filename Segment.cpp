@@ -47,7 +47,7 @@ void Segment::draw() {
     y2 = (x2 * sin(a)) + (y2 * cos(a));
     */
 
-    std::cout << x1 << y1 << x2 << y2 << std::endl;
+    std::cout << "{" << x1 << ", " << y1 << "} {" << x2 << ", " << y2 << "}" << std::endl;
 
     GraphicPrimitives::drawLine2D(static_cast<float>(x1), static_cast<float>(y1), static_cast<float>(x2),
                                   static_cast<float>(y2), R, G, B);
@@ -55,7 +55,14 @@ void Segment::draw() {
 
 void Segment::tick() {
 
-    angle += (M_PI / 60);
+    angle += (rotation_speed/60 * M_PI);
+    x = x + speed * cos(direction);
+    y = y + speed * sin(direction);
+
+    // TODO:
+    // 1. Collisions avec le bord donc rebond
+    // 2. Collisions avec les autres segments (au niveau du game engine car il connaît tous les segments!) donc rebond
+
 }
 
 
