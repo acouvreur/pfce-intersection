@@ -1,28 +1,27 @@
 #include <iostream>
 
 #include <GL/glut.h>
-
-//Drawing funciton
-void draw(void)
-{
-    //Background color
-    glClearColor(0,1,0,1);
-    glClear(GL_COLOR_BUFFER_BIT );
-    //Draw order
-    glFlush();
-}
+#include "libGraph/Engine.h"
+#include "Segment.h"
+#include "MyGraphicEngine.h"
+#include "MyGameEngine.h"
 
 //Main program
 int main(int argc, char **argv)
 {
-    glutInit(&argc, argv);
-    //Simple buffer
-    glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
-    glutInitWindowPosition(50,25);
-    glutInitWindowSize(500,250);
-    glutCreateWindow("Green window");
-    //Call to the drawing function
-    glutDisplayFunc(draw);
-    glutMainLoop();
+
+    Engine e(argc, argv);
+
+    std::vector<Segment *> segments;
+    GraphicEngineBase * ge = new MyGraphicEngine(&segments);
+    GameEngineBase * gme = new MyGameEngine(&segments);
+
+    e.setGraphicEngine(ge);
+    e.setGameEngine(gme);
+    e.start();
+
+    segments.push_back(new Segment(0.5, 0.5, 0.2, 0.5, 0.2, 0.2));
+
     return 0;
 }
+

@@ -18,7 +18,7 @@ private:
     double rotation_speed;
 
 public:
-    Segment(int x, int y, double l, double speed, double angle, double rotation_speed)
+    Segment(double x, double y, double l, double speed, double angle, double rotation_speed)
         : x(x), y(y), l(l), speed(speed), angle(angle), rotation_speed(rotation_speed) {}
 
 
@@ -59,6 +59,10 @@ public:
     void setRotation_speed(double rotation_speed);
 
     bool intersect(const Segment *s);
+
+    void draw();
+
+    void tick();
 
 };
 
