@@ -4,11 +4,11 @@
 
 #include "Segment.h"
 
-void Segment::setX(int x) {
+void Segment::setX(double x) {
     Segment::x = x;
 }
 
-void Segment::setY(int y) {
+void Segment::setY(double y) {
     Segment::y = y;
 }
 
@@ -26,4 +26,8 @@ void Segment::setAngle(double angle) {
 
 void Segment::setRotation_speed(double rotation_speed) {
     Segment::rotation_speed = rotation_speed;
+}
+
+bool Segment::intersect(const Segment *s) {
+    return false;
 }

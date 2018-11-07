@@ -10,8 +10,8 @@ class Segment {
 
 private:
 
-    int x;
-    int y;
+    double x;
+    double y;
     double l; // largeur (de chaque côté)
     double speed;
     double angle; // Radian
@@ -22,11 +22,11 @@ public:
         : x(x), y(y), l(l), speed(speed), angle(angle), rotation_speed(rotation_speed) {}
 
 
-    int getX() const {
+    double getX() const {
         return x;
     }
 
-    int getY() const {
+    double getY() const {
         return y;
     }
 
@@ -46,9 +46,9 @@ public:
         return rotation_speed;
     }
 
-    void setX(int x);
+    void setX(double x);
 
-    void setY(int y);
+    void setY(double y);
 
     void setL(double l);
 
@@ -57,6 +57,8 @@ public:
     void setAngle(double angle);
 
     void setRotation_speed(double rotation_speed);
+
+    bool intersect(const Segment *s);
 
 };
 
