@@ -16,10 +16,11 @@ private:
     double speed;
     double angle; // Radian
     double rotation_speed;
+    double R, G, B;
 
 public:
-    Segment(double x, double y, double l, double speed, double angle, double rotation_speed)
-        : x(x), y(y), l(l), speed(speed), angle(angle), rotation_speed(rotation_speed) {}
+    Segment(double x, double y, double l, double speed, double angle, double rotation_speed, double R, double G, double B)
+        : x(x), y(y), l(l), speed(speed), angle(angle), rotation_speed(rotation_speed), R(R), G(G), B(B) {}
 
 
     double getX() const {

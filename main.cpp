@@ -20,8 +20,6 @@ int main(int argc, char **argv)
     e.setGameEngine(gme);
     e.start();
 
-    segments.push_back(new Segment(0.5, 0.5, 0.2, 0.5, 0.2, 0.2));
-
     return 0;
 }
 

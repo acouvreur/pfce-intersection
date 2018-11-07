@@ -37,20 +37,25 @@ bool Segment::intersect(const Segment *s) {
 void Segment::draw() {
 
     double x1 = x + cos(angle) * (l/2);
-    double y1 = x + sin(angle) * (l/2);
+    double y1 = y + sin(angle) * (l/2);
 
     double x2 = x - cos(angle) * (l/2);
-    double y2 = x - sin(angle) * (l/2);
+    double y2 = y - sin(angle) * (l/2);
 
     /*
     x2 = (x2 * cos(a)) - (y2 * sin(a));
     y2 = (x2 * sin(a)) + (y2 * cos(a));
-*/
-    GraphicPrimitives::drawLine2D(x1, y1, x2, y2, 1., 1., 1.);
+    */
+
+    std::cout << x1 << y1 << x2 << y2 << std::endl;
+
+    GraphicPrimitives::drawLine2D(static_cast<float>(x1), static_cast<float>(y1), static_cast<float>(x2),
+                                  static_cast<float>(y2), R, G, B);
 }
 
 void Segment::tick() {
 
+    angle += (M_PI / 60);
 }
 
 
