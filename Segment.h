@@ -33,6 +33,8 @@ public:
 
     void setDirection(double direction);
 
+    bool hasBounced;
+
 private:
     // Radian
     double angle; // Radian

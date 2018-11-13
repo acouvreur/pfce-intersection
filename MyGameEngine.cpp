@@ -6,7 +6,7 @@
 
 
 void MyGameEngine::idle(){
-    /*
+
     // 0. Reset color
     for(auto &segment1 : *segments) {
         segment1->setR(.0);
@@ -35,8 +35,8 @@ void MyGameEngine::idle(){
                 segment1->setDirection(segment1->getDirection() + M_PI_2); // Reverse direction
                 segment1->setRotation_speed(-segment1->getRotation_speed()); // Reverse rotation speed
 
-                segment2->setDirection(segment2->getDirection() + M_PI_2); // Reverse direction
-                segment2->setRotation_speed(-segment2->getRotation_speed()); // Reverse rotation speed
+                //segment2->setDirection(segment2->getDirection() + M_PI_2); // Reverse direction
+                //segment2->setRotation_speed(-segment2->getRotation_speed()); // Reverse rotation speed
 
                 segment1->setR(1.0);
                 segment1->setG(.0);
@@ -48,7 +48,6 @@ void MyGameEngine::idle(){
             }
         }
     }
-    */
     // 2. Tick the move
     for (auto &segment : *segments) {
         segment->tick();
@@ -56,8 +55,12 @@ void MyGameEngine::idle(){
 
 }
 
+bool MyGameEngine::ccw(double ax, double ay, double bx, double by, double cx, double cy){
+    return (cy-ay)*(bx-ax) > (by-ay)*(cx-ax);
+}
+
 bool MyGameEngine::intersect(double ax, double ay, double bx, double by, double cx, double cy, double dx, double dy, double epsilon) {
-    double det    = (bx - ax) * (dy * cy) - (by - ay) * (dx - cx);
+    /*double det    = (bx - ax) * (dy * cy) - (by - ay) * (dx - cx);
     double gamma  = ((ay - cy) * (dx - cx)) - ((ax - cx) * (dy - cy));
     double lambda = ((ay - cy) * (bx - ax)) - ((ax - cx)) * ((by - ay));
     if(det == 0.) {
@@ -66,5 +69,7 @@ bool MyGameEngine::intersect(double ax, double ay, double bx, double by, double 
         double r = gamma / det;
         double s = lambda / det;
         return (r >= 0 && r <= 1) && (s >= 0 && s <= 1);
-    }
+    }*/
+    return ccw(ax,ay,cx,cy,dx,dy) != ccw(bx,by,cx,cy,dx,dy) && ccw(ax,ay,bx,by,cx,cy) != ccw(ax,ay,bx,by,dx,dy);
+
 }

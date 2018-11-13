@@ -41,5 +41,6 @@ public:
     }
 
     void idle() override;
+    bool ccw(double ax, double ay, double bx, double by, double cx, double cy);
     bool intersect(double ax, double ay, double bx, double by, double cx, double cy, double dx, double dy, double epsilon);
 };
