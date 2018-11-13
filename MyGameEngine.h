@@ -10,10 +10,11 @@
 
 class MyGameEngine:public GameEngineBase {
     std::vector<Segment * > *segments;
+    double epsilon;
 public:
 
-    MyGameEngine(std::vector<Segment * > * segments_) :segments(segments_){
-        const int N = 1000;
+    explicit MyGameEngine(std::vector<Segment * > * segments_) :segments(segments_), epsilon(0.0001){
+        const int N = 50;
         double L = 1.5 / sqrt(N);
 
         std::random_device rd;
@@ -39,5 +40,6 @@ public:
         }
     }
 
-    virtual void idle();
+    void idle() override;
+    bool intersect(double ax, double ay, double bx, double by, double cx, double cy, double dx, double dy, double epsilon);
 };

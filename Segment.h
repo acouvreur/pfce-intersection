@@ -14,7 +14,27 @@ private:
     double y;
     double l; // largeur (de chaque côté)
     double speed;
-    double direction; // Radian
+    double direction;
+public:
+    double getR() const;
+
+    void setR(double R);
+
+    double getG() const;
+
+    void setG(double G);
+
+    double getB() const;
+
+    void setB(double B);
+
+public:
+    double getDirection() const;
+
+    void setDirection(double direction);
+
+private:
+    // Radian
     double angle; // Radian
     double rotation_speed;
     double R, G, B;
@@ -59,8 +79,6 @@ public:
     void setAngle(double angle);
 
     void setRotation_speed(double rotation_speed);
-
-    bool intersect(const Segment *s);
 
     void draw();
 

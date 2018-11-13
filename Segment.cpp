@@ -30,10 +30,6 @@ void Segment::setRotation_speed(double rotation_speed) {
     Segment::rotation_speed = rotation_speed;
 }
 
-bool Segment::intersect(const Segment *s) {
-    return false;
-}
-
 void Segment::draw() {
 
     double x1 = x + cos(angle) * (l/2);
@@ -41,11 +37,6 @@ void Segment::draw() {
 
     double x2 = x - cos(angle) * (l/2);
     double y2 = y - sin(angle) * (l/2);
-
-    /*
-    x2 = (x2 * cos(a)) - (y2 * sin(a));
-    y2 = (x2 * sin(a)) + (y2 * cos(a));
-    */
 
     std::cout << "{" << x1 << ", " << y1 << "} {" << x2 << ", " << y2 << "}" << std::endl;
 
@@ -63,6 +54,38 @@ void Segment::tick() {
     // 1. Collisions avec le bord donc rebond
     // 2. Collisions avec les autres segments (au niveau du game engine car il connaît tous les segments!) donc rebond
 
+}
+
+double Segment::getDirection() const {
+    return direction;
+}
+
+void Segment::setDirection(double direction) {
+    Segment::direction = direction;
+}
+
+double Segment::getR() const {
+    return R;
+}
+
+void Segment::setR(double R) {
+    Segment::R = R;
+}
+
+double Segment::getG() const {
+    return G;
+}
+
+void Segment::setG(double G) {
+    Segment::G = G;
+}
+
+double Segment::getB() const {
+    return B;
+}
+
+void Segment::setB(double B) {
+    Segment::B = B;
 }
 
 
