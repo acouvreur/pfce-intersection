@@ -52,33 +52,30 @@ void Segment::tick() {
     y = y + speed * sin(direction);
     x1 = x + cos(angle) * (l/2);y1 = y + sin(angle) * (l/2);x2 = x - cos(angle) * (l/2);y2 = y - sin(angle) * (l/2);
 
-    if(x1 >1.0 || x2 >1.0){
-        rotation_speed=-rotation_speed;
-        direction+=M_PI/2;
-        angle += (rotation_speed/60 * M_PI);
-        x = x + speed * cos(direction);
-        y = y + speed * sin(direction);
-    }
-    else if(x1 <-1.0 || x2 <-1.0){
-        rotation_speed=-rotation_speed;
-        direction+=M_PI/2;
-        angle += (rotation_speed/60 * M_PI);
-        x = x + speed * cos(direction);
-        y = y + speed * sin(direction);
-    }
-    else if(y1 >1.0 || y2 >1.0){
-        rotation_speed=-rotation_speed;
-        direction+=M_PI/2;
-        angle += (rotation_speed/60 * M_PI);
-        x = x + speed * cos(direction);
-        y = y + speed * sin(direction);
-    }
-    else if(y1 <-1.0 || y2 <-1.0){
-        rotation_speed=-rotation_speed;
-        direction+=M_PI/2;
-        angle += (rotation_speed/60 * M_PI);
-        x = x + speed * cos(direction);
-        y = y + speed * sin(direction);
+    if(x1>1.0){
+        x = 1.0 - cos(angle) * (l/2);
+        direction+=M_PI_2;
+    } else if(x2>1.0){
+        x = 1.0 + cos(angle) * (l/2);
+        direction+=M_PI_2;
+    }if(y1>1.0){
+        y = 1.0 - sin(angle) * (l/2);
+        direction+=M_PI_2;
+    } else if(y2>1.0){
+        y = 1.0 + sin(angle) * (l/2);
+        direction+=M_PI_2;
+    }if(x1<-1.0){
+        x = -1.0 - cos(angle) * (l/2);
+        direction+=M_PI_2;
+    } else if(x2<-1.0){
+        x = -1.0 + cos(angle) * (l/2);
+        direction+=M_PI_2;
+    }if(y1<-1.0){
+        y = -1.0 - sin(angle) * (l/2);
+        direction+=M_PI_2;
+    } else if(y2<-1.0){
+        y = -1.0 + sin(angle) * (l/2);
+        direction+=M_PI_2;
     }
 
     // TODO:

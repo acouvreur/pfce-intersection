@@ -6,7 +6,7 @@
 
 
 void MyGameEngine::idle(){
-
+    /*
     // 0. Reset color
     for(auto &segment1 : *segments) {
         segment1->setR(.0);
@@ -48,7 +48,7 @@ void MyGameEngine::idle(){
             }
         }
     }
-
+    */
     // 2. Tick the move
     for (auto &segment : *segments) {
         segment->tick();
