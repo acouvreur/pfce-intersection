@@ -36,7 +36,7 @@ public:
             double rotation_speed = r3(mt);
             double direction = r4(mt);
 
-            segments->push_back(new Segment(x, y, L, 0.001, direction, a, rotation_speed, R, G, B));
+            segments->push_back(new Segment(x, y, L, 0.01, direction, a, rotation_speed, R, G, B));
         }
     }
 
