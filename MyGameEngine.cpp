@@ -13,6 +13,11 @@ void MyGameEngine::idle(){
         segment1->setG(1.0);
         segment1->setB(.0);
     }
+
+    auto start = std::chrono::steady_clock::now();
+
+    *collisions = 0;
+
     // 1. Check for collisions
     for(auto &segment1 : *segments) {
         double ax = segment1->getX() + cos(segment1->getAngle()) * (segment1->getL()/2);
@@ -22,7 +27,7 @@ void MyGameEngine::idle(){
         double by = segment1->getY() - sin(segment1->getAngle()) * (segment1->getL()/2);
         for(auto &segment2 : *segments) {
             if(segment1 == segment2) {
-                std::cout << "Comparing with same instance, continue" << std::endl;
+                // std::cout << "Comparing with same instance, continue" << std::endl;
                 continue;
             }
             double cx = segment2->getX() + cos(segment2->getAngle()) * (segment2->getL()/2);
@@ -31,10 +36,12 @@ void MyGameEngine::idle(){
             double dx = segment2->getX() - cos(segment2->getAngle()) * (segment2->getL()/2);
             double dy = segment2->getY() - sin(segment2->getAngle()) * (segment2->getL()/2);
             if(intersect(ax, ay, bx, by, cx, cy, dx, dy, epsilon)) {
-                std::cout << "Collision detected !" << std::endl;
-                segment1->setDirection(segment1->getDirection() + M_PI_2); // Reverse direction
-                segment1->setRotation_speed(-segment1->getRotation_speed()); // Reverse rotation speed
 
+                (*collisions)++;
+                // std::cout << "Collision detected !" << std::endl;
+                /*segment1->setDirection(segment1->getDirection() + M_PI_2); // Reverse direction
+                segment1->setRotation_speed(-segment1->getRotation_speed()); // Reverse rotation speed
+                */
                 //segment2->setDirection(segment2->getDirection() + M_PI_2); // Reverse direction
                 //segment2->setRotation_speed(-segment2->getRotation_speed()); // Reverse rotation speed
 
@@ -52,6 +59,10 @@ void MyGameEngine::idle(){
     for (auto &segment : *segments) {
         segment->tick();
     }
+
+    auto end = std::chrono::steady_clock::now();
+
+    std::cout << segments->size() << ":" << std::chrono::duration_cast<std::chrono::nanoseconds>(end - start).count() << ":" << *collisions << std::endl;
 
 }
 

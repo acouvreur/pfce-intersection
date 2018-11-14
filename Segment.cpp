@@ -38,7 +38,7 @@ void Segment::draw() {
     double x2 = x - cos(angle) * (l/2);
     double y2 = y - sin(angle) * (l/2);
 
-    std::cout << "{" << x1 << ", " << y1 << "} {" << x2 << ", " << y2 << "}" << std::endl;
+    // std::cout << "{" << x1 << ", " << y1 << "} {" << x2 << ", " << y2 << "}" << std::endl;
 
     GraphicPrimitives::drawLine2D(static_cast<float>(x1), static_cast<float>(y1), static_cast<float>(x2),
                                   static_cast<float>(y2), R, G, B);

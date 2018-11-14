@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.12)
 project(pfce_intersection)
 
 set(CMAKE_CXX_STANDARD 14)
-SET(GCC_COVERAGE_COMPILE_FLAGS "-lglut -lGLU -lGL -lm -lstdc++")
+SET(GCC_COVERAGE_COMPILE_FLAGS "-g -lglut -lGLU -lGL -lm -lstdc++ -lrt -O3")
 
 
 add_library(libGraph "")
@@ -31,6 +31,6 @@ find_package(GLUT)
 
 include_directories( ${OPENGL_INCLUDE_DIRS}  ${GLUT_INCLUDE_DIRS})
 
-target_link_libraries(pfce_intersection ${OPENGL_LIBRARIES} ${GLUT_LIBRARY} libGraph)
+target_link_libraries(pfce_intersection ${OPENGL_LIBRARIES} ${GLUT_LIBRARY} libGraph -lpthread)
 
 add_definitions(${GCC_COVERAGE_COMPILE_FLAGS})
